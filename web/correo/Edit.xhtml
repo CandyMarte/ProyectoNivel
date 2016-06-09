@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditCorreoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditCorreoLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{correoController.selected.id}" title="#{bundle.EditCorreoTitle_id}" required="true" requiredMessage="#{bundle.EditCorreoRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditCorreoLabel_correoElectronico}" for="correoElectronico" />
+                    <h:inputText id="correoElectronico" value="#{correoController.selected.correoElectronico}" title="#{bundle.EditCorreoTitle_correoElectronico}" required="true" requiredMessage="#{bundle.EditCorreoRequiredMessage_correoElectronico}"/>
+                    <h:outputLabel value="#{bundle.EditCorreoLabel_idCiudadano}" for="idCiudadano" />
+                    <h:inputText id="idCiudadano" value="#{correoController.selected.idCiudadano}" title="#{bundle.EditCorreoTitle_idCiudadano}" required="true" requiredMessage="#{bundle.EditCorreoRequiredMessage_idCiudadano}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{correoController.update}" value="#{bundle.EditCorreoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditCorreoViewLink}"/>
+                <br />
+                <h:commandLink action="#{correoController.prepareList}" value="#{bundle.EditCorreoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditCorreoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
